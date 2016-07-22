@@ -1,0 +1,19 @@
+{
+    "app": {
+        "name": "slamp-web",
+        "host": "",
+        "port": 8000,
+        "https": false
+    },
+    "database": {
+        "name": "slamp-web",
+        "host": "127.0.0.1",
+        "user": "root",
+        "pass": "root"
+    },
+    "redis": {
+        "protocol": "tcp",
+        "host": "127.0.0.1",
+        "port": 8050
+    }
+}

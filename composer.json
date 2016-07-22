@@ -1,28 +1,29 @@
 {
-  "name": "neofox/slamp-web",
-  "description": "slamp-web backend",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Jerome Schaeffer",
-      "email": "jer.schaeffer@gmail.com"
-    }
-  ],
-  "require": {
-    "alembic/slamp": "^0.1.0",
-    "amphp/aerys": "^0.4.3",
-    "rdlowrey/auryn": "^1.4",
-    "amphp/mysql": "^0.1.3",
-    "amphp/redis": "^0.2.5",
-    "justinrainbow/json-schema": "^2.0",
-    "amphp/aerys-session": "^0.2.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "Slamp\\Web\\": "src/"
+    "name": "neofox/slamp-web",
+    "description": "slamp-web backend",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jerome Schaeffer",
+            "email": "jer.schaeffer@gmail.com"
+        }
+    ],
+    "require": {
+        "alembic/slamp": "^0.1.0",
+        "amphp/aerys": "^0.4.3",
+        "rdlowrey/auryn": "^1.4",
+        "amphp/mysql": "^0.1.3",
+        "amphp/redis": "^0.2.5",
+        "justinrainbow/json-schema": "^2.0",
+        "amphp/aerys-session": "^0.2.1"
     },
-    "files": [
-      "src/functions.php"
-    ]
-  }
+    "autoload": {
+        "psr-4": {
+            "Slamp\\Web\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    }
 }
