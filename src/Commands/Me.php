@@ -9,29 +9,21 @@
 namespace Slamp\Web\Commands;
 
 
+use Slamp\SlackObject\User;
 use Slamp\Web\Command;
-use Slamp\Web\Helper\Data;
-use Slamp\Web\Helper\Request;
-use Slamp\Web\Helper\User;
-use Slamp\WebClient;
+use Slamp\Web\Helper\{Data, Request};
 
 class Me extends Command
 {
 
     public function execute(Request $request, User $user)
     {
-        $webClient = new WebClient($user->token);
-        /** @var \Slamp\SlackObject\User $me */
-        $me = yield $webClient->users->getMeAsync();
-
+        
         return new Data([
-            "id" => $user->id,
-            "name" => $user->name,
-            "token" => $user->token,
-            "slackUser" => [
-                "firstName" => $me->getFirstName(),
-                "lastName" => $me->getLastName(),
-            ]
+            "id" => $user->getId(),
+            "name" => $user->getName(),
+            "firstName" => $user->getFirstName(),
+             "lastName" => $user->getLastName(),
         ]);
     }
 }

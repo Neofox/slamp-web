@@ -9,10 +9,22 @@
 namespace Slamp\Web;
 
 
-use Slamp\Web\Helper\{Request, User};
+use Slamp\SlackObject\User;
+use Slamp\Web\Helper\{Request};
+use Slamp\WebClient;
 
 abstract class Command
 {
+    /**
+     * @var WebClient
+     */
+    protected $webClient;
+
+    public function __construct(WebClient $webClient)
+    {
+        $this->webClient = $webClient;
+    }
+
     public function getName(): string
     {
         $base = self::class . "s\\";

@@ -9,7 +9,6 @@
 namespace Slamp\Web\Authentication;
 
 
-use Slamp\Web\Helper\User;
 use Slamp\Web\Storage\UserStorage;
 use Slamp\WebClient;
 
@@ -18,33 +17,32 @@ class Authentication
     /**
      * @var UserStorage
      */
-    private $userStorage;
+    protected $userStorage;
+    /**
+     * @var WebClient
+     */
+    protected $webClient;
 
     /**
      * Authentication constructor.
      *
      * @param UserStorage $userStorage
+     * @param WebClient   $webClient
      */
-    public function __construct(UserStorage $userStorage)
+    public function __construct(UserStorage $userStorage, WebClient $webClient)
     {
         $this->userStorage = $userStorage;
+        $this->webClient = $webClient;
     }
 
-    public function authenticateWithToken(string $token) {
+    public function authenticateWithToken(string $token)
+    {
+        $this->webClient->setToken($token);
 
-        $userData = yield $this->userStorage->getByToken($token);
+        //TODO: use Redis for  fetching the user
+        $user = yield $this->webClient->users->getMeAsync();
 
-        if (!$userData) {
-            $webclient = new WebClient($token);
-            $slackUser = yield $webclient->users->getMeAsync();
-            $user = new User($slackUser['id'], $slackUser['name'], $token);
-
-            yield $this->userStorage->add($user);
-
-            //throw new RuntimeException("user with valid token, but user record does not exist");
-        }else{
-            $user = new User($userData->slackId, $userData->name, $userData->token);
-        }
+        //throw new RuntimeException("user with valid token, but user record does not exist");
 
         return $user;
     }

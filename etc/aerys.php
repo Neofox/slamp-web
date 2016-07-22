@@ -21,6 +21,7 @@ $redisUri = config("redis.protocol") . "://" . config("redis.host") . ":" . conf
 
 // Defining Dependency Injections
 $injector = new Injector();
+$injector->share(new \Slamp\WebClient());
 $injector->share(new Pool($mysqlConfig));
 $injector->share(new \Amp\Redis\Client($redisUri));
 // Ok, this is a test and a bad practise. Try to remove it.
