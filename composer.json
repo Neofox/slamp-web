@@ -2,7 +2,7 @@
     "name": "neofox/slamp-web",
     "description": "slamp-web backend",
     "license": "MIT",
-    "type": "project",
+    "type": "library",
     "authors": [
         {
             "name": "Jerome Schaeffer",
