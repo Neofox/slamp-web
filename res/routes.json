@@ -1,0 +1,17 @@
+[
+    {
+        "endpoint": "me",
+        "method": "GET",
+        "uri": "/me"
+    },
+    {
+        "endpoint": "users",
+        "method": "GET",
+        "uri": "/users"
+    },
+    {
+        "endpoint": "users/get",
+        "method": "GET",
+        "uri": "/users/{id:\\d+}"
+    }
+]
